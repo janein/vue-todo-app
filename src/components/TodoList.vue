@@ -11,6 +11,7 @@
             :item="item"
             :index="index"
             :key="`item-${index}`"
+            @onEnter="createNew"
             ref="item"
             />
             <div class="panel-block">

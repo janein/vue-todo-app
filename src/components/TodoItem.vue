@@ -3,7 +3,7 @@
     'item--done': item.done
   }">
     <div class="field has-addons item__field">     
-      <input class="item__input input is-medium" v-model="item.title" @keyup="updateTodo" placeholder="What would you like to do?" ref="input" />    
+      <input class="item__input input is-medium" v-model="item.title" @keyup="updateTodo" placeholder="What would you like to do?" @keyup.enter.prevent="onEnter" @keyup.delete="onDelete" ref="input" />    
       <p class="control">
         <button @click="toggleState(index)" class="button is-outlined is-medium" 
           :class="{
@@ -47,6 +47,15 @@ export default {
     },
     focus() {
       this.$refs.input.focus();
+    },
+    onEnter() {
+      this.$emit("onEnter");
+    },
+    onDelete(e) {
+      if (this.item.title === "") {
+        e.preventDefault();
+        this.remove(this.index);
+      }
     }
   },
   props: {
