@@ -3,9 +3,31 @@
     <h1 class="title">{{headline}}</h1>
     <form v-if="todo" @submit.prevent="onSubmit">
       <div class="field">
+        <label class="label" for="icon">Icon</label>
+        <div class="control has-icons-left">
+          <div class="select">
+            <select v-model="todo.icon" id="icon">
+              <option disabled value="">Select icon</option>
+              <option v-for="icon in icons" :value="icon.icon" :key="icon.icon">
+                {{icon.title}}
+              </option>
+            </select>
+          </div>
+          <div class="icon is-small is-left">
+            <i class="fa" :class="[`fa-${todo.icon}`]"></i>
+          </div>
+        </div>
+      </div>
+      <div class="field">
         <label class="label" for="title">Title</label>
         <div class="control">
-          <input class="input" type="text" placeholder="What whould I do?" v-model="todo.title" />
+          <input class="input" id="title" type="text" placeholder="What whould I do?" v-model="todo.title" required />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label" for="desc">Description</label>
+        <div class="control">
+          <textarea class="textarea" id="desc" placeholder="Tell me more ..." v-model="todo.desc" />
         </div>
       </div>
       <button type="submit" class="button"
@@ -20,12 +42,24 @@
         </span>
         <span>Save</span>
       </button>
+      <template v-if="success">
+        <br><br>
+        <article class="message is-success">
+          <div class="message-header">
+            <p>
+              <i class="fa fa-check"></i>
+              Saved!
+            </p>
+          </div>
+        </article>
+      </template>
     </form>    
   </div>
 </template>
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
+import { ICONS } from "../data/icons";
 
 export default {
   name: "TodoItem",
@@ -39,7 +73,9 @@ export default {
   },
   data() {
     return {
-      todo: null
+      todo: null,
+      icons: ICONS,
+      success: false
     };
   },
   props: {
@@ -61,19 +97,28 @@ export default {
               idx
             }
           });
+          this.showSuccess();
         });
       } else {
         this.$store.commit("updateTodo", {
           idx: this.index,
           todo: this.todo
         });
+        this.showSuccess();
       }
+    },
+    showSuccess() {
+      this.success = true;
+      window.setTimeout(() => {
+        this.success = false;
+      }, 1000);
     }
   },
   mounted() {
     this.todo = this.isNew
       ? {
-          title: ""
+          title: "",
+          icon: ""
         }
       : this.$store.getters["todoByIdx"](this.index);
   }

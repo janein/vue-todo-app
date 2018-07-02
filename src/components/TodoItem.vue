@@ -3,6 +3,11 @@
     'item--done': item.done
   }">
     <div class="field has-addons item__field">     
+      <p class="control item__icon-wrapper">
+          <span class="icon item__icon" v-if="item.icon">
+            <i class="fa" :class="[`fa-${item.icon}`]"></i>
+          </span>
+        </p>
       <input class="item__input input is-medium" v-model="item.title" @keyup="updateTodo" placeholder="What would you like to do?" @keyup.enter.prevent="onEnter" @keyup.delete="onDelete" ref="input" />    
       <p class="control">
         <button @click="toggleState(index)" class="button is-outlined is-medium" 
@@ -19,7 +24,7 @@
       </p>
       <p class="control">
         <router-link :to="{name: 'detail', params: {idx: index}}" class="button is-warning is-outlined is-medium">
-          <span class="icon is-small"><i class="fas fa-pen"></i></span>
+          <span class="icon is-small"><i class="fa fa-pen"></i></span>
         </router-link>
       </p>
       <p class="control">
@@ -74,7 +79,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 .item--done input {
   text-decoration: line-through;
 }
@@ -84,5 +89,22 @@ export default {
 
 .item__input {
   flex-grow: 1;
+
+  &:not(:focus) {
+    border: 0;
+    -webkit-appearance: none;
+    box-shadow: none;
+  }
+}
+
+.item__icon-wrapper {
+  min-width: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item__icon {
 }
 </style>
