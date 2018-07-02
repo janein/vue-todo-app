@@ -13,15 +13,20 @@
         >
           <span class="icon is-small">
             <i class="fas fa-ban" v-if="item.done"></i>
-            <i class="fas fa-check" v-else="item.done"></i>
+            <i class="fas fa-check" v-else></i>
           </span>
         </button>
+      </p>
+      <p class="control">
+        <router-link :to="{name: 'detail', params: {idx: index}}" class="button is-warning is-outlined is-medium">
+          <span class="icon is-small"><i class="fas fa-pen"></i></span>
+        </router-link>
       </p>
       <p class="control">
         <button @click="remove(index)" class="button is-danger is-outlined is-medium">
           <span class="icon is-small"><i class="fas fa-trash"></i></span>
         </button>
-      </p>    
+      </p>      
     </div>
   </div>
 </template>

@@ -1,16 +1,16 @@
-import Vue from 'vue';
+import Vue from "vue";
 
 export const addTodo = state => {
   state.todos.push({
-    title: '',
-    done: false,
+    title: "",
+    done: false
   });
 };
 
 export const toggleTodoState = (state, idx) => {
   Vue.set(state.todos, idx, {
     ...state.todos[idx],
-    done: !state.todos[idx].done,
+    done: !state.todos[idx].done
   });
 };
 
@@ -24,4 +24,8 @@ export const removeResolvedTodos = state => {
 
 export const removeTodo = (state, idx) => {
   state.todos.splice(idx, 1);
+};
+
+export const createTodo = (state, todo) => {
+  state.todos.push(todo);
 };

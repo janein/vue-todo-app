@@ -1,48 +1,35 @@
 <template>
-  <div>
-    <div class="columns is-mobile is-centered">
-      <div class="column is-full-mobile is-two-thirds-tablet is-half-desktop">
-        <nav class="panel">
-          <p class="panel-heading">
-            Todos
-          </p>
-          <TodoItem 
-            v-for="(item, index) of items" 
-            :item="item"
-            :index="index"
-            :key="`item-${index}`"
-            @onEnter="createNew"
-            ref="item"
-            />
-            <div class="panel-block">
-              <div class="field is-grouped">
-                <p class="control">
-                  <button @click.prevent="createNew" class="button is-primary">
-                    <span class="icon is-small">
-                      <i class="fas fa-plus"></i>
-                    </span>
-                    <span>Create new</span>
-                  </button>
-                </p>
-                <p class="control">                
-                  <button @click.prevent="removeDone" class="button is-danger is-outlined">
-                    <span class="icon is-small">
-                      <i class="fas fa-trash"></i>
-                    </span>
-                    <span>Remove all resolved tasks</span>
-                  </button>
-                </p>
-              </div>
+  <div class="columns is-mobile is-centered">
+    <div class="column is-full-mobile is-two-thirds-tablet is-half-desktop">
+      <nav class="panel">
+        <p class="panel-heading">Todos</p>
+        <TodoItem 
+          v-for="(item, index) of items" 
+          :item="item"
+          :index="index"
+          :key="`item-${index}`"
+          @onEnter="createNew"
+          ref="item"
+        />
+          <div class="panel-block">
+            <div class="field is-grouped">
+              <p class="control">
+                <router-link :to="{name: 'new'}" class="button is-primary">
+                  <span class="icon is-small"><i class="fas fa-plus"></i></span>
+                  <span>Create new</span>
+                </router-link>
+              </p>
+              <p class="control">                
+                <button @click.prevent="removeDone" class="button is-danger is-outlined">
+                  <span class="icon is-small"><i class="fas fa-trash"></i></span>
+                  <span>Remove all resolved tasks</span>
+                </button>
+              </p>
             </div>
-        </nav>
-      </div>
+          </div>
+      </nav>
     </div>
-      <hr/>
-      <br>
-    
-    <br><br>
-    
-  </div> 
+  </div>    
 </template>
 
 <script>
