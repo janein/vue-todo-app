@@ -21,7 +21,7 @@
       <div class="field">
         <label class="label" for="title">Title</label>
         <div class="control">
-          <input class="input" id="title" type="text" placeholder="What whould I do?" v-model="todo.title" required />
+          <input class="input" id="title" type="text" placeholder="What should I do?" v-model="todo.title" required />
         </div>
       </div>
       <div class="field">
