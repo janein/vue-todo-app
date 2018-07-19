@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
 
 export default {
   name: 'TodoItem',
@@ -40,15 +39,17 @@ export default {
     return {};
   },
   methods: {
-    ...mapMutations({
-      toggleState: 'toggleTodoState',
-      remove: 'removeTodo'
-    }),
     updateTodo() {
-      this.$store.commit('updateTodo', {
+      this.$emit('updateTodo', {
         idx: this.index,
         todo: this.item,
       });
+    },
+    remove(index) {
+      this.$emit('removeTodo', index);
+    },
+    toggleState(index) {
+      this.$emit('toggleTodoState', index);
     },
     focus() {
       this.$refs.input.focus();
