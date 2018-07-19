@@ -37,32 +37,32 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations } from 'vuex';
 
 export default {
-  name: "TodoItem",
+  name: 'TodoItem',
   data() {
     return {};
   },
   methods: {
     ...mapMutations({
-      toggleState: "toggleTodoState",
-      remove: "removeTodo"
+      toggleState: 'toggleTodoState',
+      remove: 'removeTodo'
     }),
     updateTodo() {
-      this.$store.commit("updateTodo", {
+      this.$store.commit('updateTodo', {
         idx: this.index,
-        todo: this.item
+        todo: this.item,
       });
     },
     focus() {
       this.$refs.input.focus();
     },
     onEnter() {
-      this.$emit("onEnter");
+      this.$emit('onEnter');
     },
     onDelete(e) {
-      if (this.item.title === "") {
+      if (this.item.title === '') {
         e.preventDefault();
         this.remove(this.index);
       }
@@ -72,9 +72,9 @@ export default {
     index: Number,
     item: {
       title: String,
-      done: Boolean
-    }
-  }
+      done: Boolean,
+    },
+  },
 };
 </script>
 

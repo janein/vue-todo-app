@@ -58,33 +58,33 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
-import { ICONS } from "../data/icons";
+import { mapMutations, mapGetters } from 'vuex';
+import { ICONS } from '../data/icons';
 
 export default {
-  name: "TodoItem",
+  name: 'TodoItem',
   computed: {
     ...mapGetters({
-      todosCount: "todosCount"
+      todosCount: 'todosCount',
     }),
     headline() {
-      return this.isNew ? "New Todo" : "Edit Todo";
+      return this.isNew ? 'New Todo' : 'Edit Todo';
     }
   },
   data() {
     return {
       todo: null,
       icons: ICONS,
-      success: false
+      success: false,
     };
   },
   props: {
     index: Number,
-    isNew: Boolean
+    isNew: Boolean,
   },
   methods: {
     ...mapMutations({
-      create: "createTodo"
+      create: 'createTodo'
     }),
     onSubmit() {
       if (this.isNew) {
@@ -92,7 +92,7 @@ export default {
         this.$nextTick(() => {
           const idx = this.todosCount - 1;
           this.$router.replace({
-            name: "detail",
+            name: 'detail',
             params: {
               idx
             }
@@ -100,7 +100,7 @@ export default {
           this.showSuccess();
         });
       } else {
-        this.$store.commit("updateTodo", {
+        this.$store.commit('updateTodo', {
           idx: this.index,
           todo: this.todo
         });
@@ -117,11 +117,11 @@ export default {
   mounted() {
     this.todo = this.isNew
       ? {
-          title: "",
-          icon: ""
+          title: '',
+          icon: ''
         }
-      : this.$store.getters["todoByIdx"](this.index);
-  }
+      : this.$store.getters['todoByIdx'](this.index);
+  },
 };
 </script>
 

@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import TodoList from "../components/TodoList";
+import TodoList from '../components/TodoList';
 
 export default {
-  name: "OverviewPage",
+  name: 'OverviewPage',
   components: {
     TodoList
   },

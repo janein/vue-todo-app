@@ -1,1 +1,1 @@
-export const testAction = function() {};
+export const testAction = function () {};

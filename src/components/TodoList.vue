@@ -33,17 +33,17 @@
 </template>
 
 <script>
-import TodoItem from "./TodoItem";
-import { mapGetters, mapMutations } from "vuex";
+import TodoItem from './TodoItem';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
-  name: "TodoList",
+  name: 'TodoList',
   components: {
     TodoItem
   },
   computed: {
     ...mapGetters({
-      items: "todos"
+      items: 'todos'
     })
   },
   data() {
@@ -51,16 +51,16 @@ export default {
   },
   methods: {
     ...mapMutations({
-      removeDone: "removeResolvedTodos"
+      removeDone: 'removeResolvedTodos',
     }),
     createNew() {
-      this.$store.commit("addTodo");
+      this.$store.commit('addTodo');
       this.$nextTick(() => {
         if (this.$refs.item.length > 0) {
           this.$refs.item[this.$refs.item.length - 1].focus();
         }
       });
-    }
+    },
   }
 };
 </script>

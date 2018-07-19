@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import EditTodo from "../components/EditTodo";
+import EditTodo from '../components/EditTodo';
 
 export default {
-  name: "DetailPage",
+  name: 'DetailPage',
   components: {
     EditTodo
   },
