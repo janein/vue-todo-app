@@ -91,12 +91,6 @@ export default {
         this.create(this.todo);
         this.$nextTick(() => {
           const idx = this.todosCount - 1;
-          this.$router.replace({
-            name: 'detail',
-            params: {
-              idx
-            }
-          });
           this.showSuccess();
         });
       } else {

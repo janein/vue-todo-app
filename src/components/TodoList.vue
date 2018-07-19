@@ -13,12 +13,6 @@
         />
           <div class="panel-block">
             <div class="field is-grouped">
-              <p class="control">
-                <router-link :to="{name: 'new'}" class="button is-primary">
-                  <span class="icon is-small"><i class="fas fa-plus"></i></span>
-                  <span>Create new</span>
-                </router-link>
-              </p>
               <p class="control">                
                 <button @click.prevent="removeDone" class="button is-danger is-outlined">
                   <span class="icon is-small"><i class="fas fa-trash"></i></span>
