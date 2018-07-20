@@ -5,36 +5,81 @@
         <div class="column is-full-mobile is-two-thirds-tablet is-half-desktop">
           <nav class="panel">
             <p class="panel-heading">Todos</p>
-            <div 
-            v-for="(item, index) of items"
-            :item="item"
-            :index="index"
-            :key="`item-${index}`"
-            ref="item"
-            class="item panel-block"
-            :class="{
-    'item--done': item.done
-  }"
-            >
+            <div class="item panel-block item--done">
               <div class="field has-addons item__field">
                 <p class="control item__icon-wrapper">
-                  <span class="icon item__icon" v-if="item.icon">
-                    <i class="fa" :class="[`fa-${item.icon}`]"></i>
+                  <span class="icon item__icon">
+                    <i class="fa fa-shopping-cart"></i>
                   </span>
                 </p>
-                <input 
-                class="item__input input is-medium" 
-                v-model="item.title" 
-                placeholder="What would you like to do?" 
-                ref="input" />
+                <input class="item__input input is-medium" placeholder="What would you like to do?" ref="input" value="Do homework" />
                 <p class="control">
-                  <button class="button is-outlined is-medium" :class="{
-            'is-success': !item.done,
-            'is-warning': item.done
-          }">
+                  <button class="button is-outlined is-medium is-warning">
                     <span class="icon is-small">
-                      <i class="fas fa-ban" v-if="item.done"></i>
-                      <i class="fas fa-check" v-else></i>
+                      <i class="fas fa-ban"></i>
+                    </span>
+                  </button>
+                </p>
+                <p class="control">
+                  <button class="button is-danger is-outlined is-medium">
+                    <span class="icon is-small">
+                      <i class="fas fa-trash"></i>
+                    </span>
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="item panel-block">
+              <div class="field has-addons item__field">
+                <p class="control item__icon-wrapper">
+                </p>
+                <input class="item__input input is-medium" placeholder="What would you like to do?" ref="input" value="buy toilet paper" />
+                <p class="control">
+                  <button class="button is-outlined is-medium is-success">
+                    <span class="icon is-small">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </button>
+                </p>
+                <p class="control">
+                  <button class="button is-danger is-outlined is-medium">
+                    <span class="icon is-small">
+                      <i class="fas fa-trash"></i>
+                    </span>
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="item panel-block">
+              <div class="field has-addons item__field">
+                <p class="control item__icon-wrapper">
+                </p>
+                <input class="item__input input is-medium" placeholder="What would you like to do?" ref="input" value="build an awesome todo-app" />
+                <p class="control">
+                  <button class="button is-outlined is-medium is-success">
+                    <span class="icon is-small">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </button>
+                </p>
+                <p class="control">
+                  <button class="button is-danger is-outlined is-medium">
+                    <span class="icon is-small">
+                      <i class="fas fa-trash"></i>
+                    </span>
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="item panel-block">
+              <div class="field has-addons item__field">
+                <p class="control item__icon-wrapper">
+                </p>
+                <input class="item__input input is-medium" placeholder="What would you like to do?" ref="input" value="" />
+                <p class="control">
+                  <button class="button is-outlined is-medium is-success">
+                    <span class="icon is-small">
+                      <i class="fas fa-check"></i>
                     </span>
                   </button>
                 </p>
@@ -67,28 +112,9 @@
 </template>
 
 <script>
-
 export default {
   name: "App",
-  data() {
-    return {
-      items: [
-        {
-          title: "Do homework",
-          done: false,
-          icon: "shopping-cart"
-        },
-        {
-          title: "buy toilet paper",
-          done: false,
-        },
-        {
-          title: "build an awesome todo-app",
-          done: false,
-        },
-      ]
-    };
-  },
+  data() {}
 };
 </script>
 
