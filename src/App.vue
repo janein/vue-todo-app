@@ -25,12 +25,10 @@
                 <input 
                 class="item__input input is-medium" 
                 v-model="item.title" 
-                @keyup="updateTodo" 
                 placeholder="What would you like to do?" 
-                @keyup.enter.prevent="createNew" 
-                @keyup.delete="onDelete($event, index, item)" ref="input" />
+                ref="input" />
                 <p class="control">
-                  <button @click="toggleState(index)" class="button is-outlined is-medium" :class="{
+                  <button class="button is-outlined is-medium" :class="{
             'is-success': !item.done,
             'is-warning': item.done
           }">
@@ -41,7 +39,7 @@
                   </button>
                 </p>
                 <p class="control">
-                  <button @click="remove(index)" class="button is-danger is-outlined is-medium">
+                  <button class="button is-danger is-outlined is-medium">
                     <span class="icon is-small">
                       <i class="fas fa-trash"></i>
                     </span>
@@ -52,7 +50,7 @@
             <div class="panel-block">
               <div class="field is-grouped">
                 <p class="control">
-                  <button @click.prevent="removeDone" class="button is-danger is-outlined">
+                  <button class="button is-danger is-outlined">
                     <span class="icon is-small">
                       <i class="fas fa-trash"></i>
                     </span>
@@ -69,7 +67,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 
 export default {
   name: "App",
@@ -92,43 +89,6 @@ export default {
       ]
     };
   },
-  methods: {
-    removeDone() {
-      Vue.set(
-        this.$data,
-        "items",
-        this.$data.items.filter(item => {
-          return !item.done;
-        })
-      );
-    },
-    createNew() {
-      this.$data.items.push({
-        title: "",
-        done: false
-      });
-      this.$nextTick(() => {
-        if (this.$refs.item.length > 0) {
-          this.$refs.item[this.$refs.item.length - 1].focus();
-        }
-      });
-    },
-    remove(index) {
-      this.$data.items.splice(index, 1);
-    },
-    updateTodo(item) {
-      Vue.set(this.$data.items, item.index, item);
-    },
-    toggleState(index) {
-      this.$data.items[index].done = !this.$data.items[index].done;
-    },
-    onDelete(e, index, item) {
-      if (item.title === '') {
-        e.preventDefault();
-        this.remove(index);
-      }
-    }
-  }
 };
 </script>
 
